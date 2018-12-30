@@ -1,16 +1,28 @@
 package controller;
 
-import model.Entity;
+import model.GameMap;
+import views.GameView;
 
 public class GameController {
 
-    public GameController(){
+    public GameController() {
         setup();
     }
 
-    private void setup(){
-        Entity entity1 = new Entity(0, 0,0);
+    private void setup() {
+        GameMap gameMap = new GameMap();
+        GameView gameView = new GameView();
 
+        try {
+            gameView.printOnTerminal(gameMap.translatePositionToChar());
+
+            gameMap.setFood();
+
+            gameView.printOnTerminal(gameMap.translatePositionToChar());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
 }
